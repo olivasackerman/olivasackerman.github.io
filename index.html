@@ -4,120 +4,335 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Olivas Ackerman | Lobby</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;800&family=Poppins:wght@600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-bg: #0f0f0f;
-            --accent-color: #00d2ff; /* Un azul cian tecnológico */
-            --text-color: #ffffff;
-            --card-bg: #1e1e1e;
+            --bg-pure-black: #000000; 
+            --bg-navy-dark: #000308; 
+            --card-dark: #111114; 
+            --accent-neon-blue: #00f2ff; 
+            --text-blue-light: #bcffff; 
+            --text-white: #ffffff;
+            --border-dark: #1f1f24; 
         }
+
+        html { scroll-behavior: smooth; }
 
         body {
             margin: 0;
-            padding: 0;
             font-family: 'Inter', sans-serif;
-            background-color: var(--primary-bg);
-            color: var(--text-color);
+            background-color: var(--bg-pure-black);
+            color: var(--text-white);
+            overflow-x: hidden;
+        }
+
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.6) 100%), 
+                        url('assets/img/fondoprincipal.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; 
             display: flex;
-            justify-content: center;
             align-items: center;
-            min-height: 100vh;
-        }
-
-        .container {
+            justify-content: center;
             text-align: center;
-            width: 90%;
-            max-width: 500px;
+            position: relative;
+            z-index: 2;
         }
 
-        .profile-img {
-            width: 120px;
-            height: 120px;
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 40vh;
+            background: linear-gradient(to bottom, transparent, var(--bg-pure-black));
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        .profile-circle {
+            width: 150px; 
+            height: 150px;
+            background: url('assets/img/iconprincipal.jpg') center/cover; 
             border-radius: 50%;
-            border: 3px solid var(--accent-color);
-            margin-bottom: 1rem;
-            object-fit: cover;
-            box-shadow: 0 0 15px var(--accent-color);
+            border: 3px solid var(--accent-neon-blue);
+            margin: 0 auto 20px;
+            box-shadow: 0 0 20px rgba(0, 242, 255, 0.5), inset 0 0 10px rgba(0, 242, 255, 0.3);
         }
 
-        h1 {
-            font-size: 1.8rem;
-            margin-bottom: 0.5rem;
-            letter-spacing: -1px;
+        .hero h1 { 
+            font-size: 3.5rem; 
+            margin: 0; 
+            letter-spacing: -2px; 
+            font-family: 'Poppins', sans-serif;
+            text-transform: uppercase;
         }
 
-        p.bio {
-            color: #aaa;
-            font-size: 0.9rem;
-            margin-bottom: 2rem;
-        }
-
-        .links-container {
-            display: grid;
-            gap: 1.5rem;
-        }
-
-        .card {
-            background: var(--card-bg);
-            padding: 1.2rem;
-            border-radius: 12px;
-            text-decoration: none;
-            color: white;
-            transition: transform 0.3s ease, border 0.3s ease;
-            border: 1px solid transparent;
+        .accent-text { 
+            color: var(--accent-neon-blue);
+            font-size: 1.2rem; 
+            font-weight: 300; 
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-top: 10px;
             display: block;
         }
 
-        .card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent-color);
-            background: #252525;
+        .scroll-wrapper {
+            margin-top: 50px;
+            display: inline-block;
+            text-decoration: none;
+            position: relative;
+            z-index: 4;
         }
 
-        .card h2 {
-            margin: 0;
-            font-size: 1.1rem;
+        .scroll-arrow {
+            width: 12px;
+            height: 12px;
+            border-right: 2px solid var(--accent-neon-blue);
+            border-bottom: 2px solid var(--accent-neon-blue);
+            transform: rotate(45deg);
+            margin: -5px auto;
+            animation: arrow-down 2s infinite;
         }
 
-        .card span {
-            font-size: 0.8rem;
-            color: var(--accent-color);
+        @keyframes arrow-down {
+            0% { opacity: 0; transform: rotate(45deg) translate(-5px, -5px); }
+            50% { opacity: 1; }
+            100% { opacity: 0; transform: rotate(45deg) translate(5px, 5px); }
+        }
+
+        /* --- Secciones de Enlaces --- */
+        .content-section {
+            position: relative;
+            z-index: 2;
+            padding: 60px 0 100px;
+            max-width: 1000px; /* Aumentado un poco para 3 columnas */
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .section-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.8rem;
+            letter-spacing: 3px;
             text-transform: uppercase;
+            margin-bottom: 40px;
+            color: var(--text-white);
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 25%;
+            width: 50%;
+            height: 2px;
+            background: var(--accent-neon-blue);
+            box-shadow: 0 0 10px var(--accent-neon-blue);
+        }
+
+        .work-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adaptable */
+            gap: 25px;
+            padding: 20px;
+        }
+
+        .work-item {
+            background-color: var(--card-dark);
+            background-size: cover;
+            background-position: center;
+            padding: 70px 20px; 
+            border-radius: 20px;
+            text-decoration: none;
+            color: white;
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid var(--border-dark);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* --- IMÁGENES DE FONDO --- */
+        .work-item.card-x {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), 
+                              url('assets/img/botonyuta.jpg');
+        }
+
+        .work-item.card-y {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), 
+                              url('assets/img/botonsukuna.jpg');
+        }
+
+        .work-item.card-portafolioedicion {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), 
+                              url('assets/img/botontoji.jpg');
+        }
+
+        /* Hover */
+        .work-item:hover {
+            border-color: var(--accent-neon-blue);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(0, 242, 255, 0.2);
+        }
+
+        .work-item:hover.card-x {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                              url('assets/img/botonyuta.jpg');
+        }
+
+        .work-item:hover.card-y {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                              url('assets/img/botonsukuna.jpg');
+        }
+
+        .work-item:hover.card-portafolioedicion {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                              url('assets/img/botontoji.jpg');
+        }
+
+        .work-item span {
+            color: var(--accent-neon-blue);
+            font-size: 0.75rem;
             font-weight: bold;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .work-item h2 {
+            margin: 0;
+            font-size: 1.4rem;
+            color: var(--text-blue-light);
+            position: relative;
+            z-index: 2;
+            text-align: center;
         }
 
         footer {
-            margin-top: 3rem;
-            font-size: 0.7rem;
+            padding: 25px 20px;
+            text-align: center;
+            background-color: var(--bg-navy-dark);
             color: #555;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .corp-name {
+            color: var(--accent-neon-blue);
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .work-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
-
-    <div class="container">
-        <img src="https://via.placeholder.com/150" alt="Olivas" class="profile-img">
-        
-        <h1>Olivas Ackerman</h1>
-        <p class="bio">Ingeniero de Sistemas & Content Creator</p>
-
-        <div class="links-container">
-            <a href="whoisolivasx.html" class="card">
-                <span>Principal</span>
-                <h2>@whoisolivasx</h2>
-            </a>
-
-            <a href="whoisolivasy.html" class="card">
-                <span>Secondary IG</span>
-                <h2>@whoisolivasy</h2>
+    <canvas id="bg-canvas"></canvas>
+    <section class="hero">
+        <div class="hero-content">
+            <div class="profile-circle"></div>
+            <h1>OLIVAS ACKERMAN</h1>
+            <span class="accent-text">Systems Engineer & Creator</span>
+            <a href="#links" class="scroll-wrapper">
+                <div class="scroll-arrow"></div>
+                <div class="scroll-arrow"></div>
             </a>
         </div>
+    </section>
 
-        <footer>
-            OLIVAS CORPORATION &copy; 2026
-        </footer>
-    </div>
+    <section id="links" class="content-section">
+        <h2 class="section-title">Mis Proyectos</h2>
+        <div class="work-grid">
+            <a href="whoisolivasx.html" class="work-item card-x">
+                <span>PROJECT X</span>
+                <h2>@whoisolivasx</h2>
+            </a>
+            <a href="whoisolivasy.html" class="work-item card-y">
+                <span>PROJECT Y</span>
+                <h2>@whoisolivasy</h2>
+            </a>
+            <a href="portafolioedicion.html" class="work-item card-portafolioedicion">
+                <span>portafolioedicion</span>
+                <h2>Edición</h2>
+            </a>
+        </div>
+    </section>
 
+    <footer>
+        &copy; 2026 | Desarrollado por <span class="corp-name">Olivas Corporation</span>
+    </footer>
+
+    <script>
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        function init() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            particles = [];
+            for (let i = 0; i < 70; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    size: Math.random() * 1.5,
+                    speedY: Math.random() * 0.4 + 0.1,
+                    opacity: Math.random() * 0.6 + 0.2
+                });
+            }
+        }
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = '#00f2ff';
+            particles.forEach(p => {
+                ctx.globalAlpha = p.opacity;
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                ctx.fill();
+                p.y -= p.speedY;
+                if (p.y < 0) p.y = canvas.height;
+            });
+            requestAnimationFrame(animate);
+        }
+        window.addEventListener('resize', init);
+        init();
+        animate();
+    </script>
 </body>
 </html>
