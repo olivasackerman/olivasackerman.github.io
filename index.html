@@ -1,1 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Olivas Ackerman | Lobby</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-bg: #0f0f0f;
+            --accent-color: #00d2ff; /* Un azul cian tecnológico */
+            --text-color: #ffffff;
+            --card-bg: #1e1e1e;
+        }
 
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--primary-bg);
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+            width: 90%;
+            max-width: 500px;
+        }
+
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid var(--accent-color);
+            margin-bottom: 1rem;
+            object-fit: cover;
+            box-shadow: 0 0 15px var(--accent-color);
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: -1px;
+        }
+
+        p.bio {
+            color: #aaa;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+        }
+
+        .links-container {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 1.2rem;
+            border-radius: 12px;
+            text-decoration: none;
+            color: white;
+            transition: transform 0.3s ease, border 0.3s ease;
+            border: 1px solid transparent;
+            display: block;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+            background: #252525;
+        }
+
+        .card h2 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .card span {
+            font-size: 0.8rem;
+            color: var(--accent-color);
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        footer {
+            margin-top: 3rem;
+            font-size: 0.7rem;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <img src="https://via.placeholder.com/150" alt="Olivas" class="profile-img">
+        
+        <h1>Olivas Ackerman</h1>
+        <p class="bio">Ingeniero de Sistemas & Content Creator</p>
+
+        <div class="links-container">
+            <a href="whoisolivasx.html" class="card">
+                <span>Principal</span>
+                <h2>@whoisolivasx</h2>
+            </a>
+
+            <a href="whoisolivasy.html" class="card">
+                <span>Secondary IG</span>
+                <h2>@whoisolivasy</h2>
+            </a>
+        </div>
+
+        <footer>
+            OLIVAS CORPORATION &copy; 2026
+        </footer>
+    </div>
+
+</body>
+</html>
