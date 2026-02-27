@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Olivas Ackerman | Lobby</title>
+    <link rel="icon" type="image/jpeg" href="assets/img/iconprincipal.jpg">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;800&family=Poppins:wght@600&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -126,7 +127,7 @@
             position: relative;
             z-index: 2;
             padding: 60px 0 100px;
-            max-width: 1000px; /* Aumentado un poco para 3 columnas */
+            max-width: 1000px;
             margin: 0 auto;
             text-align: center;
         }
@@ -155,7 +156,7 @@
 
         .work-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adaptable */
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 25px;
             padding: 20px;
         }
@@ -178,7 +179,6 @@
             overflow: hidden;
         }
 
-        /* --- IMÁGENES DE FONDO --- */
         .work-item.card-x {
             background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), 
                               url('assets/img/botonyuta.jpg');
@@ -194,7 +194,6 @@
                               url('assets/img/botontoji.jpg');
         }
 
-        /* Hover */
         .work-item:hover {
             border-color: var(--accent-neon-blue);
             transform: translateY(-8px) scale(1.02);
@@ -288,8 +287,8 @@
                 <span>PROJECT Y</span>
                 <h2>@whoisolivasy</h2>
             </a>
-            <a href="portafolioedicion.html" class="work-item card-portafolioedicion">
-                <span>portafolioedicion</span>
+            <a href="https://olivasackerman.github.io/portafolioedicion/" class="work-item card-portafolioedicion">
+                <span>PORTAFOLIO</span>
                 <h2>Edición</h2>
             </a>
         </div>
